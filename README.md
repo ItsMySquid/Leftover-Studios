@@ -21,7 +21,7 @@ assets/         Favicon and future images
 ## Things to update before launch
 
 - Search the codebase for `TODO` comments:
-  - Replace `https://instagram.com/leftoverstudio` with the real Instagram URL.
+  - Replace `https://instagram.com/ItsMySquid` with the studio Instagram URL once it exists (currently points to a personal account).
   - Replace the `steam.html` links with the real Steam store URL once live.
 - Replace `PROJECT: LEFTOVER` with the final game title.
 - Swap the `.media-placeholder` boxes for real screenshots/art.
