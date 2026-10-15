@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220">
+  <defs>
+    <linearGradient id="ship-env" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#ffb066"/>
+      <stop offset="0.55" stop-color="#ff8c42"/>
+      <stop offset="1" stop-color="#e06a1f"/>
+    </linearGradient>
+    <linearGradient id="ship-gore" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4de"/>
+      <stop offset="1" stop-color="#f3d4a4"/>
+    </linearGradient>
+    <linearGradient id="ship-hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a86e42"/>
+      <stop offset="0.6" stop-color="#7a4c2a"/>
+      <stop offset="1" stop-color="#55331b"/>
+    </linearGradient>
+    <linearGradient id="ship-flag" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffa55c"/>
+      <stop offset="1" stop-color="#f07628"/>
+    </linearGradient>
+    <clipPath id="ship-envclip">
+      <path d="M80 5 C117 5 142 32 142 58 C142 85 117 103 80 107 C43 103 18 85 18 58 C18 32 43 5 80 5 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- side ropes emerging from behind the envelope -->
+  <path d="M30 74 L28 149" stroke="#6e452a" stroke-width="1.8" fill="none"/>
+  <path d="M130 74 L132 149" stroke="#6e452a" stroke-width="1.8" fill="none"/>
+
+  <!-- balloon envelope -->
+  <path d="M80 5 C117 5 142 32 142 58 C142 85 117 103 80 107 C43 103 18 85 18 58 C18 32 43 5 80 5 Z" fill="url(#ship-env)"/>
+  <g clip-path="url(#ship-envclip)">
+    <!-- cream gores between orange panels -->
+    <path d="M80 5 C127 33 127 82 80 106 C97 82 97 33 80 5 Z" fill="url(#ship-gore)"/>
+    <path d="M80 5 C33 33 33 82 80 106 C63 82 63 33 80 5 Z" fill="url(#ship-gore)"/>
+    <!-- gore seams -->
+    <g fill="none" stroke="#a34d16" stroke-width="1">
+      <path d="M80 5 C97 33 97 82 80 106" opacity="0.3"/>
+      <path d="M80 5 C63 33 63 82 80 106" opacity="0.3"/>
+      <path d="M80 5 C127 33 127 82 80 106" opacity="0.22"/>
+      <path d="M80 5 C33 33 33 82 80 106" opacity="0.22"/>
+    </g>
+    <!-- sheen + shading -->
+    <ellipse cx="56" cy="30" rx="24" ry="13" fill="#ffffff" opacity="0.38" transform="rotate(-20 56 30)"/>
+    <ellipse cx="70" cy="17" rx="10" ry="5" fill="#ffffff" opacity="0.28" transform="rotate(-14 70 17)"/>
+    <ellipse cx="80" cy="122" rx="72" ry="30" fill="#a83f08" opacity="0.22"/>
+    <ellipse cx="152" cy="60" rx="30" ry="55" fill="#a83f08" opacity="0.14"/>
+  </g>
+  <ellipse cx="80" cy="7" rx="4.5" ry="2.5" fill="#d9622b"/>
+
+  <!-- net lines fanning over the envelope -->
+  <g fill="none" stroke="#7a4a2a" stroke-width="1.5" opacity="0.55">
+    <path d="M70 113 C58 101 46 86 40 66"/>
+    <path d="M78 115 C72 102 68 88 66 70"/>
+    <path d="M90 113 C102 101 114 86 120 66"/>
+    <path d="M84 115 C90 102 94 88 96 70"/>
+  </g>
+  <!-- gathered skirt + trapeze ring -->
+  <path d="M66 102 L94 102 L89 115 L71 115 Z" fill="#6e3f1e"/>
+  <ellipse cx="80" cy="116" rx="8" ry="3.5" fill="none" stroke="#4e2f18" stroke-width="2"/>
+
+  <!-- rigging down to the hull -->
+  <g stroke="#6e452a" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M72 114 L40 149"/>
+    <path d="M78 116 L64 149"/>
+    <path d="M88 114 L120 149"/>
+    <path d="M82 116 L96 149"/>
+  </g>
+
+  <!-- stern mast + pennant -->
+  <line x1="126" y1="149" x2="126" y2="121" stroke="#4e2f18" stroke-width="2.5"/>
+  <path d="M126 121 C134 122 142 124 150 126 C142 128 134 129 126 129 Z" fill="url(#ship-flag)"/>
+
+  <!-- hull -->
+  <path d="M31 159 L129 159 C128 171 120 182 105 187 C89 192 71 192 55 187 C40 182 32 171 31 159 Z" fill="url(#ship-hull)"/>
+  <path d="M31 159 L52 159 C52 170 48 179 55 187 C40 182 32 171 31 159 Z" fill="#c98d5f" opacity="0.5"/>
+  <path d="M116 159 L129 159 C128 171 120 182 105 187 C113 178 116 168 116 159 Z" fill="#4e2f18" opacity="0.5"/>
+  <!-- keel fin -->
+  <path d="M66 187 C74 192 86 192 94 187 L90 197 C82 200 76 200 70 197 Z" fill="#4a2c16"/>
+
+  <!-- deck cargo (behind the rail) -->
+  <rect x="40" y="139" width="14" height="10" rx="1" fill="#b0764d"/>
+  <rect x="42" y="141" width="10" height="6" fill="none" stroke="#7a4a2a" stroke-width="1"/>
+  <path d="M40 139 L54 149 M54 139 L40 149" stroke="#7a4a2a" stroke-width="1"/>
+  <rect x="57" y="140" width="11" height="9" rx="4" fill="#96613a"/>
+  <path d="M60.5 140 L60.5 149 M64.5 140 L64.5 149" stroke="#5f3a22" stroke-width="1"/>
+  <!-- deck cabin -->
+  <rect x="94" y="137" width="24" height="12" rx="2" fill="#a06a42"/>
+  <path d="M91 137 L121 137 L116 130 L96 130 Z" fill="#5f3a22"/>
+  <rect x="102" y="140" width="8" height="6" rx="1" fill="#ffe9a8" stroke="#54382a" stroke-width="0.8"/>
+
+  <!-- gunwale rail -->
+  <rect x="28" y="149" width="104" height="10" rx="4" fill="#b0764d"/>
+  <rect x="30" y="150" width="100" height="2" rx="1" fill="#d9a571" opacity="0.8"/>
+  <rect x="28" y="155" width="104" height="4" rx="2" fill="#8a5a3c" opacity="0.55"/>
+
+  <!-- plank seams + portholes -->
+  <path d="M36 166 C58 172 102 172 124 166" fill="none" stroke="#4e2f18" stroke-width="1.2" opacity="0.5"/>
+  <path d="M44 176 C62 182 98 182 116 176" fill="none" stroke="#4e2f18" stroke-width="1.2" opacity="0.5"/>
+  <g>
+    <circle cx="52" cy="171" r="5" fill="#e8b26a"/>
+    <circle cx="52" cy="171" r="3.2" fill="#2e1a0c"/>
+    <circle cx="51" cy="170" r="1" fill="#ffe9a8" opacity="0.8"/>
+    <circle cx="80" cy="171" r="5" fill="#e8b26a"/>
+    <circle cx="80" cy="171" r="3.2" fill="#2e1a0c"/>
+    <circle cx="79" cy="170" r="1" fill="#ffe9a8" opacity="0.8"/>
+    <circle cx="108" cy="171" r="5" fill="#e8b26a"/>
+    <circle cx="108" cy="171" r="3.2" fill="#2e1a0c"/>
+    <circle cx="107" cy="170" r="1" fill="#ffe9a8" opacity="0.8"/>
+  </g>
+
+  <!-- hanging sandbags -->
+  <path d="M30 149 L26 160" stroke="#6e452a" stroke-width="1.5" fill="none"/>
+  <path d="M26 159 C21 162 20 169 24 173 C28 176 32 174 33 169 C34 164 31 160 26 159 Z" fill="#d9b269"/>
+  <circle cx="26" cy="159" r="1.8" fill="#8a5a3c"/>
+  <path d="M130 149 L134 160" stroke="#6e452a" stroke-width="1.5" fill="none"/>
+  <path d="M134 159 C139 162 140 169 136 173 C132 176 128 174 127 169 C126 164 129 160 134 159 Z" fill="#d9b269"/>
+  <circle cx="134" cy="159" r="1.8" fill="#8a5a3c"/>
+</svg>

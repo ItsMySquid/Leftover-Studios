@@ -1,6 +1,6 @@
 # Leftover Studio — Game Promo Website
 
-Promotional website for **PROJECT: LEFTOVER** (working title), the first game by
+Promotional website for **MERCHANTS**, the first game by
 Leftover Studio — a team of 13 developers.
 
 Built with plain HTML/CSS/JS: no build step, so it deploys to GitHub Pages as-is
@@ -23,7 +23,7 @@ assets/         Favicon and future images
 - Search the codebase for `TODO` comments:
   - Replace `https://instagram.com/ItsMySquid` with the studio Instagram URL once it exists (currently points to a personal account).
   - Replace the `steam.html` links with the real Steam store URL once live.
-- Replace `PROJECT: LEFTOVER` with the final game title.
+- Game title is currently `MERCHANTS` (working title) — swap if it changes.
 - Swap the `.media-placeholder` boxes for real screenshots/art.
 
 ## Restyling

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Newsletter — Leftover Studio</title>
+  <meta name="description" content="Join the Leftover Studio newsletter and get word from the skies — Merchants devlogs, playtests and launch news, delivered straight to your inbox.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav-logo">LEFTOVER<span>STUDIO</span></a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="subscribe.html" class="nav-link active">Newsletter</a></li>
+        </ul>
+        <div class="nav-actions">
+          <!-- TODO: replace steam.html with the real Steam store URL once live -->
+          <a href="steam.html" class="btn btn-small">Steam</a>
+          <!-- TODO: replace with the real Instagram URL -->
+          <a href="https://instagram.com/ItsMySquid" target="_blank" rel="noopener" class="btn btn-small btn-outline">Socials</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container" data-reveal>
+        <p class="hero-kicker">Newsletter</p>
+        <h1 class="page-title">Join the fleet</h1>
+        <p class="hero-tagline">Leave your email and we'll send word when Merchants news lands — devlogs, playtests, launch.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <form class="newsletter-form" id="newsletter-form" novalidate data-reveal>
+          <div class="form-field">
+            <label class="form-label" for="email">Email address</label>
+            <div class="form-row">
+              <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" autocomplete="email" required>
+              <button class="btn btn-large" type="submit">Notify me</button>
+            </div>
+            <p class="form-status" aria-live="polite"></p>
+            <p class="form-note">One email for big news only. No spam — we promise on our cargo. (Carrier pigeon unavailable — email it is.)</p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-clouds" aria-hidden="true"></div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">LEFTOVER<span>STUDIO</span></a>
+        <p>An independent game studio of thirteen developers, currently working on our first title.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="steam.html">Steam</a></li>
+          <li><a href="subscribe.html">Newsletter</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow us</h4>
+        <ul>
+          <!-- TODO: replace with the real Instagram URL -->
+          <li><a href="https://instagram.com/ItsMySquid" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="steam.html">Steam page</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="about.html">The team</a></li>
+          <li><a href="about.html#project">The project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year"></span> Leftover Studio. All rights reserved.</p>
+      <p>MERCHANTS — currently in development.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/sky.js" defer></script>
+  <script src="js/subscribe.js" defer></script>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Leftover Studio</title>
-  <meta name="description" content="Leftover Studio is a team of thirteen developers building its first 3D game. Meet the studio and the project.">
+  <title>About — Merchants — Leftover Studio</title>
+  <meta name="description" content="Meet Leftover Studio — thirteen developers building Merchants, an open-world trading game among floating islands, balloon ships and vast skies.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,7 @@
         <ul class="nav-links">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="about.html" class="nav-link active">About</a></li>
+          <li><a href="subscribe.html" class="nav-link">Newsletter</a></li>
         </ul>
         <div class="nav-actions">
           <!-- TODO: replace steam.html with the real Steam store URL once live -->
@@ -40,13 +41,13 @@
       <div class="container">
         <p class="hero-kicker">The studio</p>
         <h1 class="page-title">We are Leftover Studio</h1>
-        <p class="hero-tagline">Thirteen people. One game. One shared obsession with making something great.</p>
+        <p class="hero-tagline" data-reveal>Thirteen people. One game called Merchants. One shared obsession with the open skies.</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container split">
-        <div>
+        <div class="panel" data-reveal>
           <h2 class="section-title">Who we are</h2>
           <p class="lead">
             Leftover Studio is a thirteen-person development team working on our first
@@ -59,7 +60,7 @@
             made in-house by the team.
           </p>
         </div>
-        <div class="media-placeholder">
+        <div class="media-placeholder" data-reveal data-reveal-delay="150">
           <span>Team photo — coming soon</span>
         </div>
       </div>
@@ -67,25 +68,26 @@
 
     <section class="section section-alt" id="project">
       <div class="container">
-        <h2 class="section-title">The project</h2>
-        <p class="section-sub">
-          PROJECT: LEFTOVER is our first game — a 3D experience currently in active
-          development. The art direction and final details are still being decided by the
-          team, which is why this site is deliberately simple: it will grow and restyle
-          together with the game.
+        <h2 class="section-title" data-reveal>The project</h2>
+        <p class="section-sub" data-reveal data-reveal-delay="150">
+          MERCHANTS is our debut title — an open-world trading game set among
+          floating islands, drifting rocks and vast skies. You pilot a
+          balloon-powered ship from island to island, buying low and selling high,
+          while cargo weight and shifting weather shape every journey. You navigate
+          by maps and landmarks — but out here, the maps don't always tell the truth.
         </p>
         <div class="card-grid">
-          <article class="card">
+          <article class="card" data-reveal>
             <h3>13</h3>
             <p>Team members across art, design, programming and production.</p>
           </article>
-          <article class="card">
+          <article class="card" data-reveal data-reveal-delay="150">
             <h3>1</h3>
-            <p>Original game in development — our debut title as a studio.</p>
+            <p>World of floating islands — Merchants, our debut title as a studio.</p>
           </article>
-          <article class="card">
+          <article class="card" data-reveal data-reveal-delay="300">
             <h3>&#8734;</h3>
-            <p>Ideas, iterations and prototypes along the way. We build in public.</p>
+            <p>Routes to chart between the islands — no two journeys fly the same.</p>
           </article>
         </div>
       </div>
@@ -93,35 +95,36 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">The team</h2>
-        <p class="section-sub">Thirteen developers make up Leftover Studio. Individual profiles will be added soon — for now, meet us through our devlogs on Instagram.</p>
+        <h2 class="section-title" data-reveal>The team</h2>
+        <p class="section-sub" data-reveal data-reveal-delay="150">Thirteen developers make up Leftover Studio. Individual profiles will be added soon — for now, meet us through our devlogs on Instagram.</p>
         <div class="media-grid team-grid">
-          <div class="media-placeholder"><span>Team member</span></div>
-          <div class="media-placeholder"><span>Team member</span></div>
-          <div class="media-placeholder"><span>Team member</span></div>
-          <div class="media-placeholder"><span>Team member</span></div>
-          <div class="media-placeholder"><span>Team member</span></div>
-          <div class="media-placeholder"><span>Team member</span></div>
+          <div class="media-placeholder" data-reveal><span>Team member</span></div>
+          <div class="media-placeholder" data-reveal data-reveal-delay="150"><span>Team member</span></div>
+          <div class="media-placeholder" data-reveal data-reveal-delay="300"><span>Team member</span></div>
+          <div class="media-placeholder" data-reveal><span>Team member</span></div>
+          <div class="media-placeholder" data-reveal data-reveal-delay="150"><span>Team member</span></div>
+          <div class="media-placeholder" data-reveal data-reveal-delay="300"><span>Team member</span></div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container cta-banner">
+      <div class="container cta-banner" data-reveal>
         <div>
           <h2>Want to follow along?</h2>
-          <p>We post updates, concept art and behind-the-scenes content on Instagram first.</p>
+          <p>Subscribe for Merchants news and devlogs — we also post concept art and behind-the-scenes content on Instagram first.</p>
         </div>
-        <a href="https://instagram.com/ItsMySquid" target="_blank" rel="noopener" class="btn btn-large">Follow on Instagram</a>
+        <a href="subscribe.html" class="btn btn-large">Get Merchants news by email</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
+    <div class="footer-clouds" aria-hidden="true"></div>
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="nav-logo">LEFTOVER<span>STUDIO</span></a>
-        <p>An independent game studio of thirteen developers, currently working on our first title.</p>
+        <p>An independent game studio of thirteen developers, currently building Merchants — an open-world trading game among floating islands.</p>
       </div>
       <div class="footer-col">
         <h4>Site</h4>
@@ -129,6 +132,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="steam.html">Steam</a></li>
+          <li><a href="subscribe.html">Newsletter</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -149,10 +153,11 @@
     </div>
     <div class="container footer-bottom">
       <p>&copy; <span id="year"></span> Leftover Studio. All rights reserved.</p>
-      <p>PROJECT: LEFTOVER — currently in development.</p>
+      <p>MERCHANTS — currently in development.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/sky.js" defer></script>
 </body>
 </html>

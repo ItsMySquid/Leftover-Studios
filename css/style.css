@@ -1,20 +1,30 @@
 /* ============================================================
-   LEFTOVER STUDIO — theme variables
-   The game's art direction is still in discussion, so every
+   LEFTOVER STUDIO — "Merchants" sky theme variables
+   The site is themed for Merchants: floating islands, drifting
+   rocks and balloon ships on a bright open sky. Every
    color/spacing decision lives here. Change these values to
    restyle the whole site in one place.
    ============================================================ */
 :root {
+  /* Sky palette — deep blue high sky fading to a warm horizon */
+  --sky-top: #5ba9de;
+  --sky-mid: #93cdf0;
+  --sky-low: #d7eefb;
+  --sky-horizon: #ffe0b0;
+
   /* Colors */
-  --color-bg: #0e0e12;
-  --color-surface: #17171e;
-  --color-surface-alt: #101016;
-  --color-border: #2a2a35;
-  --color-text: #f2f2f5;
-  --color-muted: #9a9aa8;
-  --color-accent: #ff8c42;
-  --color-accent-hover: #ffa566;
-  --color-accent-contrast: #14100c;
+  --color-bg: #bfe2f7;            /* fallback behind the gradient */
+  --color-surface: rgba(255, 255, 255, 0.78);
+  --color-text: #16324e;
+  --color-muted: #47617c;
+  --color-accent: #ff8c42;        /* sunset orange — balloon canvas */
+  --color-accent-hover: #f07628;
+  --color-accent-contrast: #331a05;
+  --color-link: #d9611a;          /* accent darkened for readable links */
+
+  /* Footer dusk */
+  --dusk-top: #31517a;
+  --dusk-bottom: #1b2f4e;
 
   /* Typography */
   --font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
@@ -23,34 +33,69 @@
 
   /* Layout */
   --container-width: 1120px;
-  --section-padding: 5rem;
-  --radius: 12px;
+  --section-padding: 5.5rem;
+  --radius: 18px;
 
-  /* Effects */
+  /* Effects — one consistent elevation scale: soft layered shadows
+     replace hard borders; --edge-highlight is the faint top light
+     seam that keeps panels readable against the bright sky. */
   --transition: 160ms ease;
+  --shadow-sm: 0 8px 20px -10px rgba(22, 50, 78, 0.22);
+  --shadow-float: 0 18px 40px -18px rgba(22, 50, 78, 0.3);
+  --shadow-lift: 0 30px 56px -22px rgba(22, 50, 78, 0.4);
+  --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 /* ============================================================
-   Base
+   Base — ambient sky
+   The whole page sits on a fixed sky gradient: deep blue up top,
+   warm sunset haze near the horizon. Faint high-altitude wisps
+   and star-dots are baked in as extra background layers.
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background-color: var(--sky-horizon); /* overscroll below the page */
+}
 
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   line-height: 1.65;
+  /* Drift clouds translate past the viewport edges — clip so they
+     never create a horizontal scrollbar (clip keeps sticky working). */
+  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--color-text);
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image:
+    /* faint high wisps + star dots near the top of the sky */
+    radial-gradient(2px 2px at 14% 10%, rgba(255, 255, 255, 0.85) 50%, transparent 55%),
+    radial-gradient(1.5px 1.5px at 30% 5%, rgba(255, 255, 255, 0.7) 50%, transparent 55%),
+    radial-gradient(1.5px 1.5px at 66% 14%, rgba(255, 255, 255, 0.7) 50%, transparent 55%),
+    radial-gradient(2px 2px at 84% 7%, rgba(255, 255, 255, 0.8) 50%, transparent 55%),
+    radial-gradient(700px 140px at 18% 22%, rgba(255, 255, 255, 0.16) 0%, transparent 70%),
+    radial-gradient(800px 150px at 78% 30%, rgba(255, 255, 255, 0.13) 0%, transparent 70%),
+    /* warm sun glow low on the horizon */
+    radial-gradient(900px 420px at 50% 108%, rgba(255, 183, 119, 0.45) 0%, transparent 65%),
+    linear-gradient(180deg,
+      var(--sky-top) 0%,
+      var(--sky-mid) 32%,
+      var(--sky-low) 62%,
+      var(--sky-horizon) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 h1, h2, h3, h4 { line-height: 1.15; font-weight: 700; }
 
-a { color: var(--color-accent); text-decoration: none; }
+a { color: var(--color-link); text-decoration: none; }
 a:hover { color: var(--color-accent-hover); }
 
 img { max-width: 100%; display: block; }
+
+::selection { background: var(--color-accent); color: var(--color-accent-contrast); }
 
 .container {
   width: 100%;
@@ -60,7 +105,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   Buttons
+   Buttons — warm sunset orange
    ============================================================ */
 .btn {
   display: inline-block;
@@ -74,28 +119,52 @@ img { max-width: 100%; display: block; }
   font-size: 0.95rem;
   letter-spacing: 0.02em;
   cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 10px 22px -10px rgba(217, 97, 26, 0.55);
   transition: background var(--transition), color var(--transition),
-              border-color var(--transition), transform var(--transition);
+              border-color var(--transition), transform var(--transition),
+              box-shadow var(--transition);
 }
 
-.btn:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); color: var(--color-accent-contrast); transform: translateY(-1px); }
+.btn:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-accent-contrast);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 16px 30px -12px rgba(217, 97, 26, 0.65);
+}
 
-.btn-outline { background: transparent; color: var(--color-accent); }
+.btn-outline {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--color-link);
+}
 .btn-outline:hover { background: var(--color-accent); color: var(--color-accent-contrast); }
 
 .btn-small { padding: 0.45rem 0.95rem; font-size: 0.85rem; }
 .btn-large { padding: 1rem 2rem; font-size: 1rem; }
 
 /* ============================================================
-   Navigation
+   Navigation — frosted glass floating on the sky
    ============================================================ */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  /* no hard border — a faint light seam plus a soft shadow lifts the
+     bar off the sky instead of drawing a line across it */
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55),
+    0 14px 32px -18px rgba(22, 50, 78, 0.4);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header { background: rgba(240, 248, 255, 0.92); }
 }
 
 .nav {
@@ -112,7 +181,7 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0.08em;
   color: var(--color-text);
 }
-.nav-logo span { color: var(--color-accent); }
+.nav-logo span { color: var(--color-accent-hover); }
 .nav-logo:hover { color: var(--color-text); }
 
 .nav-menu {
@@ -136,8 +205,8 @@ img { max-width: 100%; display: block; }
   border-bottom: 2px solid transparent;
   transition: color var(--transition), border-color var(--transition);
 }
-.nav-link:hover { color: var(--color-accent); }
-.nav-link.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+.nav-link:hover { color: var(--color-link); }
+.nav-link.active { color: var(--color-link); border-bottom-color: var(--color-accent); }
 
 .nav-actions { display: flex; gap: 0.6rem; }
 
@@ -157,7 +226,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================================
-   Hero
+   Hero — open sky with floating islands and balloon ships
    ============================================================ */
 .hero {
   position: relative;
@@ -166,23 +235,23 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 
-.hero-glow {
+/* Scene layer for floating objects: sits under .hero-inner */
+.hero-scene {
   position: absolute;
-  inset: auto -20% -60% -20%;
-  height: 70%;
-  background: radial-gradient(ellipse at center, var(--color-accent) 0%, transparent 60%);
-  opacity: 0.14;
+  inset: 0;
+  overflow: hidden;
   pointer-events: none;
+  z-index: 0;
 }
 
-.hero-inner { position: relative; }
+.hero-inner { position: relative; z-index: 1; }
 
 .hero-kicker {
   text-transform: uppercase;
   letter-spacing: 0.22em;
   font-size: 0.85rem;
   font-weight: 500;
-  color: var(--color-accent);
+  color: var(--color-link);
   margin-bottom: 1.25rem;
 }
 
@@ -191,13 +260,15 @@ img { max-width: 100%; display: block; }
   letter-spacing: -0.02em;
   line-height: 0.95;
   margin-bottom: 1.5rem;
+  color: #12314f;
+  text-shadow: 0 2px 30px rgba(255, 255, 255, 0.4);
 }
 
 .hero-tagline {
   max-width: 620px;
   margin-inline: auto;
   font-size: var(--font-size-lead);
-  color: var(--color-muted);
+  color: #2c4b68;
   margin-bottom: 2.5rem;
 }
 
@@ -209,16 +280,121 @@ img { max-width: 100%; display: block; }
 }
 
 /* Smaller hero for subpages */
-.page-hero { padding: 5.5rem 0 4rem; text-align: center; }
+.page-hero { position: relative; overflow: hidden; padding: 5.5rem 0 4rem; text-align: center; }
 .page-title { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 1.25rem; }
 .page-hero .hero-tagline { margin-bottom: 0; }
 .coming-soon .hero-cta { margin-top: 2.5rem; }
 
 /* ============================================================
-   Sections
+   Floating objects — islands, rocks, balloon ships, clouds
+   Positioned by inline custom props:
+     style="--x:12%; --y:20%; --w:180px; --dur:8s; --delay:-2s"
+   ============================================================ */
+.float-obj {
+  position: absolute;
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  width: var(--w, 160px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  animation: float-bob var(--dur, 9s) ease-in-out var(--delay, 0s) infinite;
+  will-change: translate, transform;
+}
+
+/* Bob lives on the composable `translate` property so the JS parallax
+   (which writes el.style.transform) stacks instead of fighting it. */
+@keyframes float-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -14px; }
+}
+
+/* Variants pick the artwork; aspect ratios match the SVG viewBoxes */
+.float-obj.island {
+  aspect-ratio: 200 / 160;
+  background-image: url('../assets/island.svg');
+  filter: drop-shadow(0 14px 16px rgba(22, 50, 78, 0.22));
+}
+.float-obj.island--sm { width: var(--w, 96px); }
+.float-obj.island--md { width: var(--w, 160px); }
+.float-obj.island--lg { width: var(--w, 280px); }
+
+/* Alternate island art — same 200x160 viewBox, different silhouette */
+.float-obj.island--alt { background-image: url('../assets/island-alt.svg'); }
+
+.float-obj.rock {
+  aspect-ratio: 1;
+  width: var(--w, 84px);
+  background-image: url('../assets/rock.svg');
+  filter: drop-shadow(0 10px 12px rgba(22, 50, 78, 0.18));
+}
+
+.float-obj.ship {
+  aspect-ratio: 160 / 220;
+  width: var(--w, 120px);
+  background-image: url('../assets/ship.svg');
+  filter: drop-shadow(0 12px 14px rgba(22, 50, 78, 0.2));
+}
+
+.float-obj.cloud {
+  aspect-ratio: 240 / 130;
+  width: var(--w, 200px);
+  background-image: url('../assets/cloud.svg');
+  opacity: 0.8;
+}
+
+/* Drifting clouds spawned by JS at random positions — they sail
+   slowly left → right across the sky. Parent needs position:relative. */
+.drift-cloud {
+  position: absolute;
+  left: 0;
+  top: var(--y, 20%);
+  width: var(--w, 180px);
+  aspect-ratio: 240 / 130;
+  background: url('../assets/cloud.svg') center / contain no-repeat;
+  opacity: var(--o, 0.55);
+  pointer-events: none;
+  animation: cloud-drift var(--dur, 90s) linear var(--delay, 0s) infinite;
+  will-change: transform;
+}
+
+@keyframes cloud-drift {
+  from { transform: translateX(-25vw); }
+  to { transform: translateX(115vw); }
+}
+
+/* ============================================================
+   Scroll reveal — [data-reveal] fades/rises in when JS adds
+   .revealed. Optional stagger: data-reveal-delay="150" (ms) —
+   js/sky.js applies it as an inline transition-delay.
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* JS (sky.js) writes inline transition-delay for staggering. */
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Sections — content floats on translucent sky panels
    ============================================================ */
 .section { padding-block: var(--section-padding); }
-.section-alt { background: var(--color-surface-alt); border-block: 1px solid var(--color-border); }
+.section-alt {
+  /* tonal band with feathered edges — the haze fades in and out so
+     there is no hard line between sections, just a change in air */
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 24%,
+    rgba(255, 255, 255, 0.34) 50%,
+    rgba(255, 255, 255, 0.3) 76%,
+    rgba(255, 255, 255, 0) 100%);
+}
 
 .section-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1.5rem; }
 .section-sub { max-width: 640px; color: var(--color-muted); margin-bottom: 2.5rem; }
@@ -232,26 +408,152 @@ img { max-width: 100%; display: block; }
   align-items: center;
 }
 
-/* Cards */
+/* Panel — a glassy floating frame for blocks of text. The ::before
+   ring is a dashed "sea chart" inner border: nautical, hand-drawn,
+   and consistent with the Merchants map theme. */
+.panel {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 250, 255, 0.85));
+  border-radius: 22px;
+  padding: 2.5rem;
+  box-shadow:
+    var(--edge-highlight),
+    var(--shadow-float);
+}
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1.5px dashed rgba(217, 97, 26, 0.4);
+  border-radius: 14px;
+  pointer-events: none;
+}
+/* tiny compass dot in each corner of the chart frame */
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border-radius: 17px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle 3px at 3px 3px, rgba(217, 97, 26, 0.5) 98%, transparent),
+    radial-gradient(circle 3px at calc(100% - 3px) 3px, rgba(217, 97, 26, 0.5) 98%, transparent),
+    radial-gradient(circle 3px at 3px calc(100% - 3px), rgba(217, 97, 26, 0.5) 98%, transparent),
+    radial-gradient(circle 3px at calc(100% - 3px) calc(100% - 3px), rgba(217, 97, 26, 0.5) 98%, transparent);
+  background-repeat: no-repeat;
+}
+
+/* Little trinket pinned to a panel's bottom-right corner — hangs just
+   off the frame edge and sways like it's dangling from the ship. */
+.panel-charm {
+  position: absolute;
+  right: 26px;
+  bottom: -24px;
+  width: 96px;
+  height: auto;
+  filter: drop-shadow(0 8px 12px rgba(22, 50, 78, 0.28));
+  transform-origin: 50% 8px; /* swing from the hanging loop */
+  animation: charm-sway 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes charm-sway {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Cards — soft cloud-shaped floating panels. No hard borders:
+   elevation comes from a layered shadow + a faint top light seam. */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);   /* deliberate gallery row */
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  border: 0;
+  border-radius: 24px 28px 24px 30px;
   padding: 1.75rem;
-  transition: border-color var(--transition), transform var(--transition);
+  box-shadow: var(--edge-highlight), var(--shadow-float);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* .card overrides the [data-reveal] transition — list opacity too
+     so the reveal fade still runs instead of snapping */
+  transition: opacity 0.6s ease, transform 0.35s ease,
+              box-shadow 0.35s ease;
 }
-.card:hover { border-color: var(--color-accent); transform: translateY(-3px); }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--edge-highlight), var(--shadow-lift);
+}
+
+/* Illustrated header band. Negative margins cancel .card's padding so
+   the band runs edge-to-edge; top corners match the card radius.
+   Text-only cards (no .card-media) are unaffected. */
+.card-media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: -1.75rem -1.75rem 0;
+  aspect-ratio: 16 / 10;
+  border-radius: 24px 28px 0 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #6fb4e6 0%, #a9d9f4 55%, #eaf7ff 100%);
+  /* light pooling at the bottom gives the little sky some depth */
+  box-shadow: inset 0 -34px 40px -28px rgba(255, 255, 255, 0.75);
+}
+
+/* faint horizon line across the band */
+.card-media::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 32%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+}
+
+/* Sky moods per feature — each modifier swaps the gradient */
+.card-media--ship   { background-image: linear-gradient(180deg, #5dade2 0%, #9fd5f2 55%, #e8f7ff 100%); }
+.card-media--trade  { background-image: linear-gradient(180deg, #eaa24e 0%, #f7ca85 55%, #fdeed4 100%); }
+.card-media--weight { background-image: linear-gradient(180deg, #3f6294 0%, #6f93bb 55%, #c3d9ec 100%); }
+.card-media--sky    { background-image: linear-gradient(180deg, #46a3c0 0%, #8fcfdf 55%, #ddf3f4 100%); }
+.card-media--map    { background-image: linear-gradient(180deg, #e8cf9a 0%, #f4e5c3 55%, #fbf5e4 100%); }
+.card-media--world  { background-image: linear-gradient(180deg, #7b62ab 0%, #cf8c85 55%, #f9d3a6 100%); }
+
+/* The SVG vignette floats gently inside the band — the bob lives on
+   the composable `translate` property so nothing fights transform. */
+.card-art {
+  position: relative;
+  z-index: 1;                 /* above the horizon pseudo */
+  width: 66%;
+  height: auto;
+  filter: drop-shadow(0 12px 14px rgba(22, 50, 78, 0.3));
+  animation: card-art-bob 7s ease-in-out infinite;
+}
+
+/* stagger the idle bob across the row so cards don't move in sync */
+.card-grid .card:nth-child(2) .card-art { animation-delay: -2.4s; }
+.card-grid .card:nth-child(3) .card-art { animation-delay: -4.6s; }
+.card-grid .card:nth-child(4) .card-art { animation-delay: -1.2s; }
+.card-grid .card:nth-child(5) .card-art { animation-delay: -3.5s; }
+.card-grid .card:nth-child(6) .card-art { animation-delay: -5.4s; }
+
+@keyframes card-art-bob {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+
+/* text zone under the media band — the card's own padding still
+   supplies the side/bottom spacing */
+.card-body { padding-top: 1.35rem; }
 
 .card h3 { font-size: 1.15rem; margin-bottom: 0.6rem; }
 .card p { color: var(--color-muted); font-size: 0.95rem; }
-.card-icon { color: var(--color-accent); font-size: 1.4rem; margin-bottom: 1rem; }
 
 /* Media placeholders */
 .media-grid {
@@ -265,9 +567,11 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: center;
   aspect-ratio: 16 / 10;
-  background: var(--color-surface);
-  border: 1px dashed var(--color-border);
+  background: rgba(255, 255, 255, 0.5);
+  /* very soft dashed outline — it is a placeholder, not a panel */
+  border: 1px dashed rgba(22, 50, 78, 0.16);
   border-radius: var(--radius);
+  box-shadow: var(--edge-highlight), var(--shadow-sm);
   color: var(--color-muted);
   font-size: 0.9rem;
   letter-spacing: 0.05em;
@@ -276,67 +580,256 @@ img { max-width: 100%; display: block; }
 .split .media-placeholder { aspect-ratio: 4 / 3; }
 .team-grid .media-placeholder { aspect-ratio: 1; }
 
-/* CTA banner */
+/* CTA banner — styled like a floating island card
+   (grass-green rim on top, soft drop shadow below) */
 .cta-banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1.5rem;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
+  background: linear-gradient(165deg, #ffffff 0%, #eaf6fd 60%, #d8edfb 100%);
+  border: 0;
+  border-radius: 28px 32px 28px 34px;
   padding: 2.5rem;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 5px 0 #7ed38e,
+    0 26px 54px -22px rgba(22, 50, 78, 0.42);
 }
 .cta-banner h2 { font-size: 1.6rem; margin-bottom: 0.5rem; }
 .cta-banner p { color: var(--color-muted); max-width: 480px; }
 
 /* ============================================================
-   Footer
+   Newsletter form — a floating sign-up panel
    ============================================================ */
-.site-footer {
-  border-top: 1px solid var(--color-border);
-  background: var(--color-surface-alt);
-  padding-top: 3.5rem;
+.newsletter-form {
+  background: var(--color-surface);
+  border: 0;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--edge-highlight), var(--shadow-float);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.form-input {
+  font: inherit;
+  color: var(--color-text);
+  background: #ffffff;
+  border: 1px solid rgba(22, 50, 78, 0.15);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-input::placeholder { color: #7d93a8; }
+.form-input:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.28);
+}
+
+/* Input + button on one line, stacks on mobile */
+.form-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+.form-row .form-input { flex: 1; min-width: 0; }
+.form-row .form-field { flex: 1; margin-bottom: 0; }
+.form-row .btn { flex-shrink: 0; }
+
+.form-note {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-top: 0.8rem;
+}
+
+/* Inline feedback under the form */
+.form-status {
+  font-size: 0.9rem;
+  min-height: 1.2em;
+  margin-top: 0.8rem;
+}
+.form-status--success { color: #1e7e46; }
+.form-status--error { color: #c0392b; }
+.form-status--pending { color: var(--color-muted); }
+
+/* ============================================================
+   Footer — dusk-blue band under a drifting cloud strip
+   .footer-clouds renders three parallax layers of cloud.svg
+   that straddle the footer's top edge and drift endlessly.
+   ============================================================ */
+.site-footer {
+  position: relative;
+  /* own stacking context so the layer order stays INSIDE the footer:
+     cloud strip (-1) → dusk cover (::before, 0) → content (+1) */
+  z-index: 0;
+  color: #dbe9f6;
+  /* clears the ~80px of cloud strip that hangs inside the footer */
+  padding-top: 5rem;
+}
+
+/* The dusk band is painted on a ::before cover instead of the footer
+   element itself — an element's own background always paints below its
+   negative-z children, but this cover stacks above the -1 cloud strip
+   so the footer genuinely occludes the clouds behind it. */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* pale wash near the top edge melts the visible part of the cloud
+     strip into the dusk instead of sitting on a flat gradient */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0) 110px),
+    linear-gradient(180deg, var(--dusk-top) 0%, var(--dusk-bottom) 100%);
+}
+
+/* The cloud strip straddles the footer's top edge: ~60px floats in
+   the sky above, ~80px hangs inside — where the ::before dusk cover
+   hides it, so clouds appear to sink behind the footer. Only the part
+   above the edge stays visible.
+   Three parallax layers of cloud.svg: the element itself is the
+   farthest (smallest, highest, slowest), ::before the mid layer and
+   ::after the nearest. Each layer is a repeat-x background sized to
+   a fixed px tile — footer-cloud-drift moves exactly one tile for a
+   seamless loop — and every rendered cloud stays shorter than the
+   strip so nothing is ever cropped vertically. */
+.footer-clouds {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  right: 0;
+  height: 140px;
+  z-index: -1;
+  pointer-events: none;
+  --tile: 150px;
+  background:
+    /* atmospheric haze — fades the far layer toward the dusk and
+       softens the strip's lower edge; sized one tile wider than the
+       strip so the drift never uncovers it */
+    linear-gradient(180deg, rgba(163, 208, 238, 0) 0%, rgba(163, 208, 238, 0.4) 100%)
+      0 0 / calc(100% + var(--tile)) 100% no-repeat,
+    url('../assets/cloud.svg') repeat-x 0 calc(100% - 42px) / var(--tile) auto;
+  animation: footer-cloud-drift 160s linear infinite;
+}
+.footer-clouds::before,
+.footer-clouds::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../assets/cloud.svg') repeat-x
+    0 calc(100% - var(--lift, 0px)) / var(--tile) auto;
+  animation: footer-cloud-drift var(--dur, 120s) linear infinite;
+}
+.footer-clouds::before { --tile: 200px; --lift: 14px; --dur: 115s; opacity: 0.72; }
+.footer-clouds::after  { --tile: 250px; --lift: 0px;  --dur: 80s;  opacity: 0.95; }
+
+/* Each layer scrolls exactly one tile width → seamless loop */
+@keyframes footer-cloud-drift {
+  to { background-position-x: calc(-1 * var(--tile)); }
+}
+
+/* content stays above the drifting cloud strip */
 .footer-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 2.5rem;
   padding-bottom: 2.5rem;
 }
 
-.footer-brand p { color: var(--color-muted); font-size: 0.95rem; margin-top: 1rem; max-width: 300px; }
+.footer-brand p { color: #a9c3dc; font-size: 0.95rem; margin-top: 1rem; max-width: 300px; }
+.site-footer .nav-logo { color: #ffffff; }
+.site-footer .nav-logo span { color: var(--color-accent); }
+.site-footer .nav-logo:hover { color: #ffffff; }
 
 .footer-col h4 {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-muted);
+  color: #8fb2d4;
   margin-bottom: 1rem;
 }
 
 .footer-col ul { list-style: none; }
 .footer-col li { margin-bottom: 0.55rem; }
-.footer-col a { color: var(--color-text); font-size: 0.95rem; }
-.footer-col a:hover { color: var(--color-accent); }
+.footer-col a { color: #e6f1fa; font-size: 0.95rem; }
+.footer-col a:hover { color: #ffb877; }
 
 .footer-bottom {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
   padding-block: 1.5rem;
-  border-top: 1px solid var(--color-border);
-  color: var(--color-muted);
+  /* faint gradient hairline fading out at the ends — softer than a
+     solid border across the whole width */
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 15%,
+    rgba(255, 255, 255, 0.16) 85%,
+    transparent 100%) top / 100% 1px no-repeat;
+  color: #8fb2d4;
   font-size: 0.85rem;
+}
+
+/* ============================================================
+   Reduced motion — no bobbing, drifting or reveal animations
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .float-obj,
+  .drift-cloud,
+  .card-art,
+  .panel-charm,
+  .footer-clouds,
+  .footer-clouds::before,
+  .footer-clouds::after {
+    animation: none;
+  }
+
+  .float-obj { translate: none; transform: none; }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ============================================================
    Responsive
    ============================================================ */
+/* tablet: card gallery steps down to two columns */
+@media (max-width: 960px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 780px) {
+  .card-grid { grid-template-columns: 1fr; }
+
   .nav-toggle { display: flex; }
 
   .nav-menu {
@@ -347,8 +840,11 @@ img { max-width: 100%; display: block; }
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
-    background: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
+    background: rgba(244, 250, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 0;
+    box-shadow: 0 20px 34px -20px rgba(22, 50, 78, 0.4);
     padding: 1.5rem;
     display: none;
   }
@@ -357,12 +853,38 @@ img { max-width: 100%; display: block; }
   .nav-links { flex-direction: column; align-items: flex-start; gap: 1rem; }
 
   .split { grid-template-columns: 1fr; gap: 2rem; }
+  .panel { padding: 1.6rem; }
+  .panel::before { inset: 8px; }
+  .panel-charm { width: 64px; right: 14px; bottom: -18px; }
   .split .media-placeholder { order: -1; }
 
   .cta-banner { flex-direction: column; align-items: flex-start; }
 
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
+
+  /* Floating set dressing: shrink on small screens, drop rocks */
+  .float-obj.rock { display: none; }
+  .float-obj.island { width: calc(var(--w, 160px) * 0.6); }
+  .float-obj.island--lg { width: calc(var(--w, 280px) * 0.6); }
+  .float-obj.ship { width: calc(var(--w, 120px) * 0.7); }
+  .float-obj.cloud { width: calc(var(--w, 200px) * 0.7); }
+
+  /* smaller cloud strip — the tiles shrink too so every cloud stays
+     whole inside the shorter band */
+  .site-footer { padding-top: 3.5rem; }
+  .footer-clouds {
+    top: -34px;
+    height: 84px;
+    --tile: 90px;
+    background-position: 0 0, 0 calc(100% - 24px);
+  }
+  .footer-clouds::before { --tile: 120px; --lift: 8px; }
+  .footer-clouds::after { --tile: 150px; }
+
+  /* Newsletter form rows stack */
+  .form-row { flex-direction: column; }
+  .form-row .btn { width: 100%; }
 
   :root { --section-padding: 3.5rem; }
 }

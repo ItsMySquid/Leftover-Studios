@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 130">
+  <defs>
+    <linearGradient id="cl-shade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d4e9f7"/>
+      <stop offset="1" stop-color="#a9cee9"/>
+    </linearGradient>
+    <linearGradient id="cl-white" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef7fd"/>
+    </linearGradient>
+  </defs>
+  <!-- NOTE: left/right ~20px kept transparent — this file tiles
+       seamlessly with repeat-x in the site footer. -->
+  <!-- pale-blue belly layer, shifted down -->
+  <g fill="url(#cl-shade)">
+    <ellipse cx="120" cy="106" rx="92" ry="19"/>
+    <circle cx="56" cy="94" r="24"/>
+    <circle cx="95" cy="72" r="32"/>
+    <circle cx="141" cy="62" r="36"/>
+    <circle cx="182" cy="82" r="26"/>
+    <circle cx="204" cy="98" r="13"/>
+  </g>
+  <!-- white puff layer -->
+  <g fill="url(#cl-white)">
+    <ellipse cx="120" cy="98" rx="96" ry="22"/>
+    <circle cx="52" cy="84" r="27"/>
+    <circle cx="92" cy="62" r="34"/>
+    <circle cx="140" cy="50" r="39"/>
+    <circle cx="182" cy="70" r="29"/>
+    <circle cx="206" cy="89" r="12"/>
+  </g>
+  <!-- soft blue wash along the lower whites -->
+  <ellipse cx="118" cy="110" rx="80" ry="13" fill="#d9ecf9" opacity="0.55"/>
+</svg>
