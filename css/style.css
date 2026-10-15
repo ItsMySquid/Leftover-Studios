@@ -463,6 +463,9 @@ img { max-width: 100%; display: block; }
   50% { transform: rotate(5deg); }
 }
 
+/* Text-only panels stay narrow enough to read comfortably */
+.panel-narrow { max-width: 880px; margin-inline: auto; }
+
 /* Cards — soft cloud-shaped floating panels. No hard borders:
    elevation comes from a layered shadow + a faint top light seam. */
 .card-grid {
@@ -578,7 +581,6 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
 }
 .split .media-placeholder { aspect-ratio: 4 / 3; }
-.team-grid .media-placeholder { aspect-ratio: 1; }
 
 /* CTA banner — styled like a floating island card
    (grass-green rim on top, soft drop shadow below) */
