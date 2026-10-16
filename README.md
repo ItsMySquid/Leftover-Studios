@@ -37,7 +37,7 @@ change the values there to restyle the entire site.
 2. On GitHub: **Settings → Pages**.
 3. Under **Build and deployment** → **Source**, choose **Deploy from a branch**.
 4. Select branch `main` and folder `/ (root)`, then **Save**.
-5. The site goes live at `https://itsmysquid.github.io/Leftover-Studios/`.
+5. The site goes live at `https://itsmysquid.github.io/Overleft_Studios/`.
 
 The `.nojekyll` file tells GitHub Pages to serve the files as-is.
 
