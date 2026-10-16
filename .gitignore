@@ -1,4 +1,1 @@
 node_modules/
-server/data/subscribers.json
-server/data/*.bak
-server/data/*.tmp

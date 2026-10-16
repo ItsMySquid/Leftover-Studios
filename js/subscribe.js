@@ -1,9 +1,10 @@
-// Newsletter signup — posts the email to /api/subscribe and reflects
-// state in the .form-status live region. Degrades gracefully when the
-// site is served statically (GitHub Pages, file://) with no backend.
+// Newsletter signup — posts the email to a Google Apps Script web app
+// that appends it to a private Google Sheet, and reflects state in the
+// .form-status live region. Works on static hosting (GitHub Pages).
 (function () {
   'use strict';
 
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzJ5OZ1GRl693Z5m1eVDfcPIqfBSbL7Upr0r_RW8C_I0uOS1XQCrHyKYVYwwCTTJi1b/exec';
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   var INSTAGRAM_URL = 'https://www.instagram.com/overleft.studios/';
   var TIKTOK_URL = 'https://www.tiktok.com/@overleft.studios';
@@ -40,9 +41,11 @@
     if (button) button.disabled = true;
     setStatus('pending', 'Sending word to the fleet\u2026');
 
-    fetch('/api/subscribe', {
+    // text/plain keeps this a CORS "simple request" — Apps Script web
+    // apps don't answer preflight OPTIONS, so application/json fails.
+    fetch(ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ email: email })
     })
       .then(function (res) {
@@ -63,10 +66,10 @@
         }
       })
       .catch(function () {
-        // No backend reachable (file:// preview or static hosting like GitHub Pages).
+        // Network failure — the Apps Script endpoint couldn't be reached at all.
         setStatus(
           'error',
-          'The sign-up desk isn\u2019t reachable right now — this site is being served without its backend. ' +
+          'The sign-up desk isn\u2019t reachable right now — please check your connection and try again. ' +
           'In the meantime, follow us on <a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">Instagram</a> ' +
           'or <a href="' + TIKTOK_URL + '" target="_blank" rel="noopener">TikTok</a> for every update.',
           true
