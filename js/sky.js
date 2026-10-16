@@ -1,5 +1,5 @@
 /* ============================================================
-   sky.js — shared sky/motion engine for the Leftover Studio site
+   sky.js — shared sky/motion engine for the Overleft Studios site
    ------------------------------------------------------------
    Dependency-free. Loaded with `defer` on every page.
    Every feature is guarded: missing elements or missing browser

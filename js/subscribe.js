@@ -5,7 +5,8 @@
   'use strict';
 
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var INSTAGRAM_URL = 'https://instagram.com/ItsMySquid';
+  var INSTAGRAM_URL = 'https://www.instagram.com/overleft.studios/';
+  var TIKTOK_URL = 'https://www.tiktok.com/@overleft.studios';
 
   var form = document.querySelector('.newsletter-form');
   if (!form) return; // Not on the newsletter page — nothing to do.
@@ -66,7 +67,8 @@
         setStatus(
           'error',
           'The sign-up desk isn\u2019t reachable right now — this site is being served without its backend. ' +
-          'In the meantime, follow us on <a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">Instagram</a> for every update.',
+          'In the meantime, follow us on <a href="' + INSTAGRAM_URL + '" target="_blank" rel="noopener">Instagram</a> ' +
+          'or <a href="' + TIKTOK_URL + '" target="_blank" rel="noopener">TikTok</a> for every update.',
           true
         );
       })

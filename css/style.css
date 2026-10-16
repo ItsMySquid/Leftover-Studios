@@ -1,5 +1,5 @@
 /* ============================================================
-   LEFTOVER STUDIO — "Merchants" sky theme variables
+   OVERLEFT STUDIOS — "Merchants" sky theme variables
    The site is themed for Merchants: floating islands, drifting
    rocks and balloon ships on a bright open sky. Every
    color/spacing decision lives here. Change these values to
@@ -145,6 +145,15 @@ img { max-width: 100%; display: block; }
 
 .btn-small { padding: 0.45rem 0.95rem; font-size: 0.85rem; }
 .btn-large { padding: 1rem 2rem; font-size: 1rem; }
+
+/* Inline icon inside a button (social links, etc.) — inherits the
+   button's text color via currentColor and stays baseline-aligned. */
+.btn svg {
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.16em;
+  margin-right: 0.4em;
+}
 
 /* ============================================================
    Navigation — frosted glass floating on the sky

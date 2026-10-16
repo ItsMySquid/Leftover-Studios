@@ -1,7 +1,7 @@
-# Leftover Studio — Game Promo Website
+# Overleft Studios — Game Promo Website
 
 Promotional website for **MERCHANTS**, the first game by
-Leftover Studio — a team of 13 developers.
+Overleft Studios — a team of 13 developers.
 
 Built with plain HTML/CSS/JS: no build step, so it deploys to GitHub Pages as-is
 and works on any static host (Netlify, Vercel, your own server) later.
@@ -21,7 +21,6 @@ assets/         Favicon and future images
 ## Things to update before launch
 
 - Search the codebase for `TODO` comments:
-  - Replace `https://instagram.com/ItsMySquid` with the studio Instagram URL once it exists (currently points to a personal account).
   - Replace the `steam.html` links with the real Steam store URL once live.
 - Game title is currently `MERCHANTS` (working title) — swap if it changes.
 - Swap the `.media-placeholder` boxes for real screenshots/art.

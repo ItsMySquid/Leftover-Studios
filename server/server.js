@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Leftover Studio — dev/newsletter server.
+ * Overleft Studios — dev/newsletter server.
  *
  * Zero-dependency Node server (node:http + node:fs + node:path only).
  * Serves the static site from the repo root and exposes a tiny JSON API
@@ -274,6 +274,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Leftover Studio site running at http://localhost:${PORT}`);
+  console.log(`Overleft Studios site running at http://localhost:${PORT}`);
   console.log(`Newsletter endpoint: POST http://localhost:${PORT}/api/subscribe`);
 });

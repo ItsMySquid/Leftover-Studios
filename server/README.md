@@ -1,4 +1,4 @@
-# Leftover Studio — local server
+# Overleft Studios — local server
 
 Zero-dependency Node server (Node 18+, built-ins only) that serves the
 static site **and** the newsletter signup API.
@@ -33,5 +33,5 @@ running.
 GitHub Pages (and any static host) **cannot run this server**. The site
 works fine there, but the form on `subscribe.html` degrades gracefully:
 it detects the unreachable `/api/subscribe` endpoint and points visitors
-to Instagram instead. Run this server only when you want the sign-up
+to the studio's socials instead. Run this server only when you want the sign-up
 desk live (local dev, VPS, etc.).
